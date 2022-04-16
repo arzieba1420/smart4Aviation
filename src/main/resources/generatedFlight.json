@@ -1,0 +1,37 @@
+[
+  {
+    "flightId": 0,
+    "flightNumber": 4796,
+    "departureAirportIATACode": "YYZ",
+    "arrivalAirportIATACode": "PPX",
+    "departureDate": "2015-04-12T06:32:03 -02:00"
+  },
+  {
+    "flightId": 1,
+    "flightNumber": 2914,
+    "departureAirportIATACode": "LAX",
+    "arrivalAirportIATACode": "GDN",
+    "departureDate": "2021-04-01T11:46:48 -02:00"
+  },
+  {
+    "flightId": 2,
+    "flightNumber": 5136,
+    "departureAirportIATACode": "ANC",
+    "arrivalAirportIATACode": "PPX",
+    "departureDate": "2020-03-06T12:21:05 -01:00"
+  },
+  {
+    "flightId": 3,
+    "flightNumber": 3112,
+    "departureAirportIATACode": "LAX",
+    "arrivalAirportIATACode": "PPX",
+    "departureDate": "2015-05-20T09:03:48 -02:00"
+  },
+  {
+    "flightId": 4,
+    "flightNumber": 8055,
+    "departureAirportIATACode": "SEA",
+    "arrivalAirportIATACode": "KRK",
+    "departureDate": "2019-12-20T04:27:47 -01:00"
+  }
+]
