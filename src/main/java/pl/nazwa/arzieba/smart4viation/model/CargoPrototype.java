@@ -2,23 +2,21 @@ package pl.nazwa.arzieba.smart4viation.model;
 
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-
 @Component
 public class CargoPrototype {
 
     Integer id;
-    Integer weight;
-    String weighUnit;
+    Float weight;
+    String weightUnit;
     Integer pieces;
 
     public CargoPrototype() {
     }
 
-    public CargoPrototype(Integer id, Integer weight, String weighUnit, Integer pieces) {
+    public CargoPrototype(Integer id, Float weight, String weightUnit, Integer pieces) {
         this.id = id;
         this.weight = weight;
-        this.weighUnit = weighUnit;
+        this.weightUnit = weightUnit;
         this.pieces = pieces;
     }
 
@@ -30,20 +28,20 @@ public class CargoPrototype {
         this.id = id;
     }
 
-    public Integer getWeight() {
+    public Float getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(Float weight) {
         this.weight = weight;
     }
 
-    public String getWeighUnit() {
-        return weighUnit;
+    public String getWeightUnit() {
+        return weightUnit;
     }
 
-    public void setWeighUnit(String weighUnit) {
-        this.weighUnit = weighUnit;
+    public void setWeightUnit(String weightUnit) {
+        this.weightUnit = weightUnit;
     }
 
     public Integer getPieces() {

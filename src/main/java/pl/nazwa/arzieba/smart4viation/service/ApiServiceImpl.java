@@ -1,21 +1,25 @@
 package pl.nazwa.arzieba.smart4viation.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.nazwa.arzieba.smart4viation.configuration.InitSampleData;
 import pl.nazwa.arzieba.smart4viation.dto.FlightResponseDTO;
 import pl.nazwa.arzieba.smart4viation.model.CargoEnt;
+import pl.nazwa.arzieba.smart4viation.model.CargoPrototype;
 import pl.nazwa.arzieba.smart4viation.model.Flight;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 @Service
 public class ApiServiceImpl implements ApiService {
 
+    Logger logger = LoggerFactory.getLogger(getClass());
+
     InitSampleData initSampleData;
-    FlightResponseDTO flightResponseDTO;
+    Float unitFactor = 1F;
+
 
     @Autowired
     public ApiServiceImpl(InitSampleData initSampleData) {
@@ -23,14 +27,28 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
-    public FlightResponseDTO getFlightDetails(Integer id) {
+    public FlightResponseDTO getFlightDetails(Integer flightNumber) {
         List<Flight> flights = initSampleData.flights;
         List<CargoEnt> cargoEnts = initSampleData.cargoEnts;
 
-        CargoEnt requestedEnt = cargoEnts.stream().filter(e->e.getFlightId().equals(id)).findAny().orElseThrow(()->new RuntimeException("No such flight in database for id: "+id));
+        Float netBaggageWeight =0F;
+        Float netCargoWeight = 0F;
 
-        Integer initBaggageWeight =0;
+       for (CargoPrototype baggage: requestedEnt.getBaggage()){
+           if(baggage.getWeightUnit().equals("kg")) unitFactor=2.20462262F;
+           netBaggageWeight+=(baggage.getWeight()*unitFactor);
+       }
 
-        return null;
+        for (CargoPrototype cargo: requestedEnt.getCargo()){
+            if(cargo.getWeightUnit().equals("kg")) unitFactor=2.20462262F;
+                    else if (cargo.getWeightUnit().equals("lb")) unitFactor=1F;
+                    else throw new RuntimeException("Incorrect weight units");
+            netCargoWeight+=(cargo.getWeight()*unitFactor);
+        }
+
+       logger.info("test: "+netBaggageWeight);
+
+
+        return new FlightResponseDTO(id,netCargoWeight,netBaggageWeight,netCargoWeight+netBaggageWeight);
         }
 }

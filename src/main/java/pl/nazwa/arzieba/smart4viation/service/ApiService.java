@@ -6,5 +6,5 @@ import pl.nazwa.arzieba.smart4viation.dto.FlightResponseDTO;
 @Service
 public interface ApiService {
 
-    public FlightResponseDTO getFlightDetails(Integer id);
+    public FlightResponseDTO getFlightDetails(Integer flightNumber);
 }

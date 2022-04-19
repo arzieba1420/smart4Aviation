@@ -1,11 +1,11 @@
 package pl.nazwa.arzieba.smart4viation.controller;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import pl.nazwa.arzieba.smart4viation.configuration.InitSampleData;
+import pl.nazwa.arzieba.smart4viation.dto.FlightResponseDTO;
 import pl.nazwa.arzieba.smart4viation.service.ApiService;
 
 
@@ -21,9 +21,9 @@ public class ApiController {
         this.apiService = apiService;
     }
 
-    @GetMapping("flight")
-    public String flightDetails (@RequestParam Integer flightId){
-        apiService.getFlightDetails(flightId);
-        return null;
+    @GetMapping(value = "flight",produces = "application/json")
+    public FlightResponseDTO flightDetails (@RequestParam Integer flightNumber){
+        FlightResponseDTO responseDTO= apiService.getFlightDetails(flightNumber);
+        return responseDTO;
     }
 }

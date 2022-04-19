@@ -1,45 +1,58 @@
 package pl.nazwa.arzieba.smart4viation.dto;
 
+import org.springframework.format.annotation.NumberFormat;
 import org.springframework.stereotype.Component;
 
 @Component
 public class FlightResponseDTO {
 
-    private Integer cargoWeidth;
-    private Integer baggageWeidth;
-    private Integer totalWeidth;
+    private Integer flightId;
+
+    private Float cargoWeight_lb;
+    private Float baggageWeight_lb;
+    private Float totalWeight_lb;
+    private String weightUnit = "lb";
 
     public FlightResponseDTO() {
+
     }
 
-    public FlightResponseDTO(Integer cargoWeidth, Integer baggageWeidth, Integer totalWeidth) {
-        this.cargoWeidth = cargoWeidth;
-        this.baggageWeidth = baggageWeidth;
-        this.totalWeidth = totalWeidth;
+    public FlightResponseDTO(Integer flightId, Float cargoWeight_lb, Float baggageWeight_lb, Float totalWeight_lb) {
+        this.flightId = flightId;
+        this.cargoWeight_lb = cargoWeight_lb;
+        this.baggageWeight_lb = baggageWeight_lb;
+        this.totalWeight_lb = totalWeight_lb;
     }
 
-    public Integer getCargoWeidth() {
-        return cargoWeidth;
+    public Float getCargoWeight_lb() {
+        return cargoWeight_lb;
     }
 
-    public void setCargoWeidth(Integer cargoWeidth) {
-        this.cargoWeidth = cargoWeidth;
+    public void setCargoWeight_lb(Float cargoWeight_lb) {
+        this.cargoWeight_lb = cargoWeight_lb;
     }
 
-    public Integer getBaggageWeidth() {
-        return baggageWeidth;
+    public Float getBaggageWeight_lb() {
+        return baggageWeight_lb;
     }
 
-    public void setBaggageWeidth(Integer baggageWeidth) {
-        this.baggageWeidth = baggageWeidth;
+    public void setBaggageWeight_lb(Float baggageWeight_lb) {
+        this.baggageWeight_lb = baggageWeight_lb;
     }
 
-    public Integer getTotalWeidth() {
-        return totalWeidth;
+    public Float getTotalWeight_lb() {
+        return totalWeight_lb;
     }
 
-    public void setTotalWeidth(Integer totalWeidth) {
-        this.totalWeidth = totalWeidth;
+    public void setTotalWeight_lb(Float totalWeight_lb) {
+        this.totalWeight_lb = totalWeight_lb;
     }
 
+    public Integer getFlightId() {
+        return flightId;
+    }
+
+    public void setFlightId(Integer flightId) {
+        this.flightId = flightId;
+    }
 }
